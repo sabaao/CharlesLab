@@ -7,9 +7,9 @@ public class EmailTest {
 
 	public static void main(String[] args) throws Exception{
 		// mail server connection parameters
-	    String host = "mail.yxunistar.com";
-	    String user = "charles";
-	    String password = "wf46re";
+	    String host = "mail server";
+	    String user = "user name";
+	    String password = "password";
 	 
 	    // connect to my pop3 inbox
 	    Properties properties = System.getProperties();
