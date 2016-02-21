@@ -3,7 +3,7 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-public class EmailTest {
+public class MailServer {
 
 	public static void main(String[] args) throws Exception{
 		// mail server connection parameters
