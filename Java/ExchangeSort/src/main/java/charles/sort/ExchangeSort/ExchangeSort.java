@@ -1,9 +1,5 @@
 package charles.sort.ExchangeSort;
 
-/**
- * Hello world!
- *
- */
 public class ExchangeSort 
 {
 	private int[] array;
