@@ -66,7 +66,7 @@ public class QuickSort
 	
     public static void main( String[] args )
     {
-    	int[] array = {5,6,3,1,8,9,10,44,27};
+    	int[] array = {22,9,2,5,4,3,1};
     	QuickSort quick = new QuickSort(array);
     	quick.sort();
     	quick.print();
