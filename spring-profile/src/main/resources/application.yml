@@ -1,0 +1,23 @@
+server:
+  port: 8080
+---
+spring:
+  profiles: default
+charles:
+  test: "default"
+server:
+  port: 9000
+---
+spring:
+  profiles: dev
+charles:
+  test: "dev"
+server:
+  port: 8081
+---
+spring:
+  profiles: prod
+charles:
+  test: "prod"
+server:
+  port: 8082
