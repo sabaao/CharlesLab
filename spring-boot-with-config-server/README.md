@@ -1,0 +1,1 @@
+Input http://localhost:7002/charleslab then you can get value from config-server

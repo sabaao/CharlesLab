@@ -5,7 +5,10 @@ spring:
     active: dev
   cloud:
     config:
-      uri: http://localhost:7001
+      #uri: http://localhost:7001
+      discovery:
+        enabled: true
+        serviceId: config-server
 server:
   port: 7002
 eureka:
