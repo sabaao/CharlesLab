@@ -25,11 +25,35 @@ public class App {
 @RefreshScope
 @RestController
 class RestControl{
-	@Value("${charles.lab.value}")
-	private String value;
+	@Value("${charles.didispace.value}")
+	private String didispace;
 	
-	@RequestMapping(value = "/charleslab")
-	public String getCharlesLabValue() {
-		return value;
+	@Value("${charles.didispace.dev.value}")
+	private String didispaceDev;
+	
+	@Value("${charles.base.value}")
+	private String base;
+	
+	@Value("${common.base.value}")
+	private String common;
+	
+	@RequestMapping(value = "/didispace")
+	public String getDidiSpaceValue() {
+		return didispace;
+	}
+	
+	@RequestMapping(value = "/didispacedev")
+	public String getDidiSpaceDevValue() {
+		return didispaceDev;
+	}
+	
+	@RequestMapping(value = "/base")
+	public String getBase() {
+		return base;
+	}
+	
+	@RequestMapping(value = "/common")
+	public String getCommon() {
+		return common;
 	}
 }

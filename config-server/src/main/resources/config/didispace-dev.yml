@@ -1,0 +1,7 @@
+charles:
+  didispace:
+    dev:
+      value: didispace-dev.yml
+common:
+  base:
+    value: didispace-dev.yml

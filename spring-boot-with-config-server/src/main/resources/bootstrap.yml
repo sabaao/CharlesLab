@@ -5,10 +5,12 @@ spring:
     active: dev
   cloud:
     config:
+      name: didispace,base
       #uri: http://localhost:7001
       discovery:
         enabled: true
         serviceId: config-server
+      profile: ${config.profile:dev}
 server:
   port: 7002
 eureka:
