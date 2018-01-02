@@ -1,0 +1,8 @@
+server:
+  port: 11009
+
+spring:
+  application:
+    name: zipkin-client
+  zipkin:
+    base-url: http://localhost:11008
