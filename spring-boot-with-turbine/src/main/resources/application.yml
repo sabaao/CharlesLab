@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: turbine
+server:
+  port: 8300
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    #是否需要注册到注册中心，因为该项目本身作为服务注册中心
+    register-with-eureka: true
+    #是否需要从注册中心获取服务列表
+    fetch-registry: true
+turbine:
+  # 配置Eureka中的serviceId列表，表明监控哪些服务,多个服务用',"分隔
+  appConfig: HYSTRIX-CLIENT
+  aggregator:
+    # 指定聚合哪些集群，多个使用”,”分割，默认为default。可使用http://.../turbine.stream?cluster={clusterConfig之一}访问
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+    
