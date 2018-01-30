@@ -1,0 +1,1 @@
+You can visit swagger ui in http://192.168.31.195:10500/swagger-ui.html
