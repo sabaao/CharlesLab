@@ -1,12 +1,15 @@
-Markdown: Basics
-================
 
-Getting the Gist of Markdown's Formatting Syntax
-------------------------------------------------
+# File name
+使用駝峰式命名法
+## 類別(Class)
+以大寫開頭
+如：MyClass
+## 變數(Variable)
+以小寫開頭
+如：myAttribute
+## 方法(Method)
+以小寫開頭
+如：myMethod
 
-#1 Introduction
-##1.1 Terminology notes
-
-##1.2 Guide notes
 
 Reference: https://google.github.io/styleguide/javaguide.html
