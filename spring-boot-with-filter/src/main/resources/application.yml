@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: book
+server:
+  port: 8090
