@@ -1,0 +1,10 @@
+server:
+  port: 8095
+spring:
+  application:
+    name: sentinel-service
+  redis:
+    sentinel:
+      master: master
+      #以逗号分隔的“主机：端口”对列表进行引导。
+      nodes: 127.0.0.1:26379,127.0.0.1:26380
