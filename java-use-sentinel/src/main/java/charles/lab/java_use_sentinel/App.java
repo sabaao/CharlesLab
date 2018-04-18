@@ -24,31 +24,47 @@ public class App {
   public App() {}
 
   public void runTestData() throws InterruptedException {
+    boolean writeNext = true;
     JedisSentinelPool pool = new JedisSentinelPool(MASTER_NAME, sentinels);
     Jedis jedis = null;
-    try {
-      System.out.println("Fetching connection from pool");
-      jedis = pool.getResource();
-      System.out.println("Authenticating...");
-      // jedis.auth(PASSWORD);
-      System.out.println("auth complete...");
-      Socket socket = jedis.getClient().getSocket();
-      System.out.println("Connected to " + socket.getRemoteSocketAddress());
-
-      System.out.println("Writing...");
-      jedis.set("java-key-999", "java-value-999");
-
-      System.out.println("Reading...");
-      System.out.println("java-key-999 : " + jedis.get("java-key-999"));
-
-
-    } catch (JedisException e) {
-      System.out.println("Connection error of some sort!");
-      System.out.println(e.getMessage());
-    } finally {
-      if (jedis != null) {
-        jedis.close();
-      }
+    while (true) {
+        try {
+            System.out.println("Fetching connection from pool");
+            jedis = pool.getResource();
+            System.out.println("Authenticating...");
+//            jedis.auth(PASSWORD);
+            System.out.println("auth complete...");
+            Socket socket = jedis.getClient().getSocket();
+            System.out.println("Connected to " + socket.getRemoteSocketAddress());
+            while (true) {
+                if (writeNext) {
+                  System.out.println("Writing...");
+                    jedis.set("java-key-999", "java-value-999");
+                    writeNext = false;
+                } else {
+                  System.out.println("Reading...");
+                    jedis.get("java-key-999");
+                    writeNext = true;
+                }
+                Thread.sleep(2 * 1000);
+            }
+        } catch (JedisException e) {
+          System.out.println("Connection error of some sort!");
+          System.out.println(e.getMessage());
+            Thread.sleep(2 * 1000);
+        } catch(Exception e){
+          e.printStackTrace();
+        }
+        finally {
+            if (jedis != null) {
+              try{
+                jedis.close();
+              }catch(Exception e){
+                e.printStackTrace();
+              }
+                
+            }
+        }
     }
   }
 
