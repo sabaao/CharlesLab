@@ -1,0 +1,7 @@
+#which packages will scan 
+aop-log-utils:
+  scan:
+    names: com.cathay.holdings
+logging:
+  level:
+    root: info
