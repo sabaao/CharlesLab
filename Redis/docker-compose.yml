@@ -1,0 +1,11 @@
+web:
+  image: 'redis:latest'
+  restart: always
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      #external_url 'https://gitlab.example.com'
+      appendonly 'yes'
+      # Add any other gitlab.rb configuration here, each on its own line
+  ports:
+    - '6379:6379'
+  container_name: redis
