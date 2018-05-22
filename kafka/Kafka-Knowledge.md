@@ -46,6 +46,35 @@ Kafka通过Zookeeper管理集群配置，选举leader，以及在consumer group�
 - path
 
     $KAFKA_HOME/config/server.properties
+    
+- num.partitions
+
+	```properties
+	# The default number of log partitions per topic. More partitions allow greater
+	# parallelism for consumption, but this will also result in more files across
+	# the brokers.
+	num.partitions=3
+	```
+	每一条消息被发送到broker时，会根据paritition规则选择被存储到哪一个partition。如果partition规则设置的合理，所有消息可以均匀分布到不同的partition里，这样就实现了水平扩展。（如果一个topic对应一个文件，那这个文件所在的机器I/O将会成为这个topic的性能瓶颈，而partition解决了这个问题）。
+	
+- retention.hours
+
+	```properties
+	# The minimum age of a log file to be eligible for deletion
+	log.retention.hours=168
+	```
+	log多久後會被刪掉
+	
+- default.replication.factor
+	
+	```properties
+	default.replication.factor = 1
+	```
+	该 Replication与leader election配合提供了自动的failover机制。replication对Kafka的吞吐率是有一定影响的，但极大的增强了可用性。默认情况下，Kafka的replication数量为1。　　每个partition都有一个唯一的leader，所有的读写操作都在leader上完成，leader批量从leader上pull数据。一般情况下partition的数量大于等于broker的数量，并且所有partition的leader均匀分布在broker上。
+# Kafka存活
+包含两个条件，一是它必须维护与Zookeeper的session(这个通过Zookeeper的heartbeat机制来实现)。二是follower必须能够及时将leader的writing复制过来，不能“落后太多”。
+leader会track“in sync”的node list。如果一个follower宕机，或者落后太多，leader将把它从”in sync” list中移除。这里所描述的“落后太多”指follower复制的消息落后于leader后的条数超过预定值，该值可在$KAFKA_HOME/config/server.properties中配置
+	
   
 # Reference
 - [http://www.jasongj.com/2015/01/02/Kafka%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/](http://www.jasongj.com/2015/01/02/Kafka%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/)
