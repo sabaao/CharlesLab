@@ -1,4 +1,3 @@
-
 # Introduction Kafka
 
 
@@ -23,19 +22,31 @@ Kafka是一种分布式的，基于发布/订阅的消息系统。主要设计�
 
 # Terminology
 - Broker
-  Kafka Cluster是由多台Kafka組成的，而每一台Kafka就是一個Broker.
+    
+    Kafka Cluster是由多台Kafka組成的，而每一台Kafka就是一個Broker.
 - Topic
-  每条发布到Kafka集群的消息都有一个类别，这个类别被称为topic。
+    
+    每条发布到Kafka集群的消息都有一个类别，这个类别被称为topic。
 - Partition
-  parition是物理上的概念，每个topic包含一个或多个partition，创建topic时可指定parition数量。每个partition对应于一个文件夹，该文件夹下存储该partition的数据和索引文件
+    
+    parition是物理上的概念，每个topic包含一个或多个partition，创建topic时可指定parition数量。每个partition对应于一个文件夹，该文件夹下存储该partition的数据和索引文件
 - Producer
-负责发布消息到Kafka broker
+    
+    负责发布消息到Kafka broker
 - Consumer
-消费消息。每个consumer属于一个特定的consumer group（可为每个consumer指定group name，若不指定group name则属于默认的group）。使用consumer high level API时，同一topic的一条消息只能被同一个consumer group内的一个consumer消费，但多个consumer group可同时消费这一消息。
+    
+    消费消息。每个consumer属于一个特定的consumer group（可为每个consumer指定group name，若不指定group name则属于默认的group）。使用consumer high level API时，同一topic的一条消息只能被同一个consumer group内的一个consumer消费，但多个consumer group可同时消费这一消息。
 
-#Kafka Architecture
+# Kafka Architecture
 ![Kafka架構圖](https://github.com/sabaao/CharlesLab/blob/master/kafka/images/KafkaArchitecture.png)
 
+Kafka通过Zookeeper管理集群配置，选举leader，以及在consumer group发生变化时进行rebalance。producer使用push模式将消息发布到broker，consumer使用pull模式从broker订阅并消费消息。 
+
+# Kafka config
+- path
+
+    $KAFKA_HOME/config/server.properties
+  
 # Reference
 - [http://www.jasongj.com/2015/01/02/Kafka%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/](http://www.jasongj.com/2015/01/02/Kafka%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/)
 - 
