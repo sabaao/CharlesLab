@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: kafka
+  kafka:
+    consumer:
+      # 指定默认消费者group id
+      group-id: boot
+      auto-offset-reset: earliest
+      auto-commit-interval: 100
+      enable-auto-commit: true
+      # 指定消息key和消息体的编解码方式
+      key-deserializer:
+        org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer:
+        org.apache.kafka.common.serialization.StringDeserializer
+    bootstrap-servers: localhost:9092
+    producer:
+      retries: 0
+      # 每次批量发送消息的数量
+      batch-size: 16384
+      buffer-memory: 33554432
+      # 指定消息key和消息体的编解码方式
+      key-serializer:
+        org.apache.kafka.common.serialization.StringSerializer
+      value-serializer:
+        org.apache.kafka.common.serialization.StringSerializer
+        
+server:
+  port: 9000
+  
+kafka:
+  topics:
+    boot: boot.t
