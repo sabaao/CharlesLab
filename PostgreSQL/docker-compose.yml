@@ -1,0 +1,9 @@
+postgresql:
+  image: postgres:latest
+  environment:
+    - POSTGRES_USER=sonar
+    - POSTGRES_PASSWORD=sonar
+    - POSTGRES_DB=sonar
+  ports:
+    - "5432:5432"
+  container_name: postgresql
