@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: admin
+  boot:
+    admin:
+      url: http://localhost:${server.port}
+  jackson:
+    serialization:
+      indent-output: true
+endpoints:
+  health:
+    sensitive: false
+server:
+  port: 12000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    #是否需要注册到注册中心，因为该项目本身作为服务注册中心
+    register-with-eureka: true
+    #是否需要从注册中心获取服务列表
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5
