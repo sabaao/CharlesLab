@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: admin-client
+server:
+  port: 12005
+management:
+  security:
+    enabled: true #actuator是否需要安全保証
+    #roles:
+    #- SUPERUSER
+  context-path: /manage 
+  port: 11111
+security:
+  basic:
+    enabled: true
+    path: /manage #對/manage路徑進行認証
+  user:
+    name: admin
+    password: secret
+    
+endpoints:
+  health: 
+    enabled: true 
+    sensitive: true
+  metrics:
+    enabled: true
+    sensitive: true
+  info:
+    enabled: true
+    sensitive: true
+  trace:
+    enabled: true
+    sensitive: true
+  shutdown:
+    sensitive: true
+    enabled: true
