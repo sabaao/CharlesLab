@@ -1,36 +1,37 @@
 spring:
   application:
-    name: admin-client
+    name: actuator-password
 server:
   port: 12005
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    #是否需要注册到注册中心，因为该项目本身作为服务注册中心
+    register-with-eureka: true
+    #是否需要从注册中心获取服务列表
+    fetch-registry: true
+  instance:
+    metadata-map:
+      management:
+        context-path: ${management.context-path}
+    health-check-url-path: ${management.context-path}/health
 management:
+  context-path: /manage
   security:
-    enabled: true #actuator是否需要安全保証
-    #roles:
-    #- SUPERUSER
-  context-path: /manage 
-  port: 11111
+    enabled: true
 security:
+  user:
+    name: client
+    password: client
+    role: ACTUATOR
   basic:
     enabled: true
-    path: /manage #對/manage路徑進行認証
-  user:
-    name: admin
-    password: secret
-    
+    path: /manage
 endpoints:
-  health: 
-    enabled: true 
-    sensitive: true
-  metrics:
-    enabled: true
-    sensitive: true
-  info:
-    enabled: true
-    sensitive: true
-  trace:
-    enabled: true
-    sensitive: true
+  enabled: true
+  sensitive: false
   shutdown:
     sensitive: true
     enabled: true
+    
