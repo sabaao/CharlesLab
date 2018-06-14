@@ -1,24 +1,13 @@
 spring:
   application:
     name: admin
-  boot:
-    admin:
-      url: http://localhost:${server.port}
-      notify:
-        pagerduty:
-          client: 
-      username: client
-      password: client
-    client:
-      metadata:
-        user: ${security.user.name}
-        password: ${security.user.password}
   jackson:
     serialization:
       indent-output: true
 endpoints:
   health:
-    sensitive: false
+    sensitive: true
+    enabled: true
 server:
   port: 12000
 eureka:
@@ -30,12 +19,21 @@ eureka:
     #是否需要从注册中心获取服务列表
     fetch-registry: true
     registry-fetch-interval-seconds: 5
+  instance:
+    metadata-map:
+      management:
+        context-path: ${management.context-path}
+      user:
+        name: client
+        password: client
+    health-check-url-path: ${management.context-path}/health
 management:
   security:
     enabled: false
+  context-path: /manage
 security:
   user:
     name: client
     password: client
   basic:
-    enabled: false
+    enabled: true
