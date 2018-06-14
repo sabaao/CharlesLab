@@ -1,18 +1,6 @@
 spring:
   application:
     name: admin
-  boot:
-    admin:
-      url: http://localhost:${server.port}
-      notify:
-        pagerduty:
-          client: 
-      username: client
-      password: client
-    client:
-      metadata:
-        user: ${security.user.name}
-        password: ${security.user.password}
   jackson:
     serialization:
       indent-output: true
@@ -38,4 +26,7 @@ security:
     name: client
     password: client
   basic:
-    enabled: false
+    enabled: true
+logging:
+  level:
+    root: INFO
