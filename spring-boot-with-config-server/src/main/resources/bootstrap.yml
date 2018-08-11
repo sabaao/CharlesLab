@@ -5,7 +5,8 @@ spring:
     active: dev
   cloud:
     config:
-      name: didispace,base
+      
+      name: base,didispace
       #uri: http://localhost:7001
       discovery:
         enabled: true
@@ -17,3 +18,5 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
+

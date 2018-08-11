@@ -1,0 +1,17 @@
+release.properties
+.settings/org.eclipse.core.resources.prefs
+.project
+.classpath
+target/*
+target/classes/application.properties
+.settings/org.eclipse.m2e.core.prefs
+.settings/org.eclipse.jdt.core.prefs
+target/classes/com/mkyong/WelcomeController.class
+.settings/org.eclipse.wst.common.project.facet.core.xml
+target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+target/maven-archiver/pom.properties
+target/TestScm-0.1.11.jar.original
+target/TestScm-0.1.11.jar
+target/TestScm-0.2.0.jar.original
+target/TestScm-0.2.0.jar

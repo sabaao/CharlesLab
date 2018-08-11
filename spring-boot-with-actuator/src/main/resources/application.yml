@@ -11,6 +11,19 @@ eureka:
     register-with-eureka: true
     #是否需要从注册中心获取服务列表
     fetch-registry: true
-#management:
-#  security:
-#    enabled: false
+  instance:
+    metadata-map:
+      management:
+        context-path: ${management.context-path}
+    health-check-url-path: ${management.context-path}/health
+management:
+  context-path: /manage
+  security:
+    enabled: false
+security:
+  user:
+    name: client
+    password: client
+  basic:
+    enabled: true
+    path: /manage
