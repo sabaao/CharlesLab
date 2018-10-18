@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: book
+server:
+  port: 8090
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    #是否需要注册到注册中心，因为该项目本身作为服务注册中心
+    register-with-eureka: true
+    #是否需要从注册中心获取服务列表
+    fetch-registry: true
