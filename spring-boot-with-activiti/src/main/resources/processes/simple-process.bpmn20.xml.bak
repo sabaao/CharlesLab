@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="Examples">
+  <process id="simpleProcess" name="Simple Process" isExecutable="true">
+    <startEvent id="theStart"></startEvent>
+    <sequenceFlow id="sequenceFlow-952e6d4d-e47c-4b81-87fd-b32321bbe8b1" sourceRef="theStart" targetRef="theTask1"></sequenceFlow>
+    <userTask id="theTask1" name="Task 1" activiti:assignee="${person.name}">
+      <documentation>Do the first task.</documentation>
+    </userTask>
+    <sequenceFlow id="sequenceFlow-b961dd5d-9f21-43eb-bf66-0aa2d95b0998" sourceRef="theTask1" targetRef="theTask2"></sequenceFlow>
+    <userTask id="theTask2" name="Task 2" activiti:assignee="${person.name}">
+      <documentation>Work for the second task.</documentation>
+    </userTask>
+    <sequenceFlow id="sequenceFlow-4a292356-6daa-4a81-b82e-4bb004858e21" sourceRef="theTask2" targetRef="notification"></sequenceFlow>
+    <scriptTask id="notification" name="final Notice" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>
+				println 'finish Process.'
+			</script>
+    </scriptTask>
+    <sequenceFlow id="sequenceFlow-03558b8a-aee2-4f8f-8335-b0459b4c56ab" sourceRef="notification" targetRef="theEnd"></sequenceFlow>
+    <endEvent id="theEnd"></endEvent>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_simpleProcess">
+    <bpmndi:BPMNPlane bpmnElement="simpleProcess" id="BPMNPlane_simpleProcess">
+      <bpmndi:BPMNShape bpmnElement="theStart" id="BPMNShape_theStart">
+        <omgdc:Bounds height="35.0" width="35.0" x="0.0" y="15.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="theTask1" id="BPMNShape_theTask1">
+        <omgdc:Bounds height="60.0" width="100.0" x="80.0" y="0.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="theTask2" id="BPMNShape_theTask2">
+        <omgdc:Bounds height="60.0" width="100.0" x="230.0" y="0.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="notification" id="BPMNShape_notification">
+        <omgdc:Bounds height="60.0" width="100.0" x="380.0" y="0.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="theEnd" id="BPMNShape_theEnd">
+        <omgdc:Bounds height="35.0" width="35.0" x="530.0" y="15.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow-952e6d4d-e47c-4b81-87fd-b32321bbe8b1" id="BPMNEdge_sequenceFlow-952e6d4d-e47c-4b81-87fd-b32321bbe8b1">
+        <omgdi:waypoint x="35.0" y="32.0"></omgdi:waypoint>
+        <omgdi:waypoint x="42.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="42.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="80.0" y="30.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow-b961dd5d-9f21-43eb-bf66-0aa2d95b0998" id="BPMNEdge_sequenceFlow-b961dd5d-9f21-43eb-bf66-0aa2d95b0998">
+        <omgdi:waypoint x="180.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="192.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="192.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="230.0" y="30.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow-4a292356-6daa-4a81-b82e-4bb004858e21" id="BPMNEdge_sequenceFlow-4a292356-6daa-4a81-b82e-4bb004858e21">
+        <omgdi:waypoint x="330.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="342.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="342.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="380.0" y="30.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow-03558b8a-aee2-4f8f-8335-b0459b4c56ab" id="BPMNEdge_sequenceFlow-03558b8a-aee2-4f8f-8335-b0459b4c56ab">
+        <omgdi:waypoint x="480.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="492.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="492.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="530.0" y="32.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
