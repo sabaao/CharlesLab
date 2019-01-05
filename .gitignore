@@ -3,8 +3,5 @@
 */.project
 */factorypath
 */target/*
-
-spring-boot-with-valid/spring-boot-with-valid/.settings/org.eclipse.core.resources.prefs
-spring-boot-with-valid/spring-boot-with-valid/.settings/org.eclipse.jdt.core.prefs
-spring-boot-with-valid/spring-boot-with-valid/.settings/org.eclipse.m2e.core.prefs
-spring-boot-with-valid/spring-boot-with-valid/.settings/org.springframework.ide.eclipse.prefs
+*.prefs
+*.class
